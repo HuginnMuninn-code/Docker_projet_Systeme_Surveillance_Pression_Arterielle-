@@ -36,9 +36,9 @@ Démarrez les services Kafka, Zookeeper, Elasticsearch et Kibana :
 ```
 Bash
 
-``docker-compose -f kafka-docker-compose.yml up -d``
+docker-compose -f kafka-docker-compose.yml up -d
 
-``docker-compose -f elastic-kibana-docker-compose.yml up -d``
+docker-compose -f elastic-kibana-docker-compose.yml up -d
 ```
 
 2. Entraîner le modèle de Machine Learning
@@ -46,23 +46,23 @@ Avant de lancer l'analyse, générez le modèle de classification (Normal vs Ano
 
 ```
 Bash
-``python train_model.py``
+python train_model.py
 ```
 
 Ceci créera un fichier bp_logreg.pkl utilisé par le consumer pour prédire la probabilité d'anomalie.
 
 3. Lancer le Consumer (Analyseur)
 Le consumer attend les messages de Kafka, les traite et les indexe dans Elasticsearch :
-
+```
 Bash
-``python consumer.py``
-
+python consumer.py
+```
 4. Lancer le Producer (Générateur de données)
 Le producer commence à envoyer des mesures de pression artérielle aléatoires :
 
 ```
 Bash
-``python producer.py``
+python producer.py
 ```
 
 ## Logique de Détection des Anomalies
